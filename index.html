@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Contest Notifier Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-code"></i> Code Contest Notifier Pro</h1>
+            <div class="user-actions">
+                <button id="notif-toggle"><i class="fas fa-bell"></i></button>
+                <button id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <div class="platform-tabs">
+                <button class="tab active" data-platform="all">All Platforms</button>
+                <button class="tab" data-platform="leetcode">LeetCode</button>
+                <button class="tab" data-platform="codeforces">Codeforces</button>
+                <button class="tab" data-platform="codechef">CodeChef</button>
+                <button class="tab" data-platform="gfg">GeeksforGeeks</button>
+            </div>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Search contests...">
+                <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <div class="controls">
+            <div class="filter-group">
+                <label for="time-filter">Time Range:</label>
+                <select id="time-filter">
+                    <option value="all">All Upcoming</option>
+                    <option value="today">Today</option>
+                    <option value="week">This Week</option>
+                    <option value="month">This Month</option>
+                </select>
+            </div>
+            <div class="sort-group">
+                <label for="sort-by">Sort By:</label>
+                <select id="sort-by">
+                    <option value="start-asc">Start Time (Earliest)</option>
+                    <option value="start-desc">Start Time (Latest)</option>
+                    <option value="duration-asc">Duration (Shortest)</option>
+                    <option value="duration-desc">Duration (Longest)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="contests-container">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Loading contests...</p>
+            </div>
+        </div>
+    </main>
+    
+    <div id="notification-prefs" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Notification Preferences</h2>
+            <form id="notif-form">
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="enable-notif" checked>
+                        Enable Notifications
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>Notification Time Before Contest:</label>
+                    <div class="time-options">
+                        <label><input type="checkbox" name="notif-time" value="15" checked> 15 min</label>
+                        <label><input type="checkbox" name="notif-time" value="60" checked> 1 hour</label>
+                        <label><input type="checkbox" name="notif-time" value="1440"> 1 day</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Platforms:</label>
+                    <div class="platform-options">
+                        <label><input type="checkbox" name="platform" value="leetcode" checked> LeetCode</label>
+                        <label><input type="checkbox" name="platform" value="codeforces" checked> Codeforces</label>
+                        <label><input type="checkbox" name="platform" value="codechef" checked> CodeChef</label>
+                        <label><input type="checkbox" name="platform" value="gfg"> GeeksforGeeks</label>
+                    </div>
+                </div>
+                <button type="submit" class="save-btn">Save Preferences</button>
+            </form>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 Code Contest Notifier Pro | Data updates every 30 minutes</p>
+            <div class="api-status">
+                <span id="cf-status"><i class="fas fa-circle"></i> Codeforces</span>
+                <span id="lc-status"><i class="fas fa-circle"></i> LeetCode</span>
+                <span id="cc-status"><i class="fas fa-circle"></i> CodeChef</span>
+                <span id="gfg-status"><i class="fas fa-circle"></i> GFG</span>
+            </div>
+        </div>
+    </footer>
+    
+    <script  type="module" src="js/api.js"></script>
+    <script  type="module" src="js/notifications.js"></script>
+    <script  type="module" src="js/main.js"></script>
+</body>
+</html>
